@@ -34,7 +34,7 @@
     },
     "require-dev": {
         "behat/behat": "~3.0,>=3.0.11",
-        "bossa/phpspec2-expect": "~1.0",
+        "dragonrun1/phpspec2-expect": "~1.0",
         "symfony/filesystem": "~2.1"
     },
     "suggest": {
