@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     xmlns="http://www.w3.org/2000/svg" width="375px" height="375px" id="svg2" version="1.1"
+     inkscape:version="0.48.5 r10040" sodipodi:docname="scroll-is.svg" fill="none">
+    <defs id="defs28">
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="red" stop-opacity="1"/>
+            <stop offset="22%" stop-color="red" stop-opacity="1"/>
+            <stop offset="40%" stop-color="rgb(240,240,0)" stop-opacity="1"/>
+            <stop offset="60%" stop-color="green" stop-opacity="1"/>
+            <stop offset="100%" stop-color="green" stop-opacity="1"/>
+        </linearGradient>
+    </defs>
+    <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10"
+                        gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2"
+                        inkscape:window-width="1400" inkscape:window-height="763" id="namedview26" showgrid="false"
+                        showborder="true" inkscape:showpageshadow="false" inkscape:zoom="0.59" inkscape:cx="200"
+                        inkscape:cy="264" inkscape:window-x="2000" inkscape:window-y="75" inkscape:window-maximized="0"
+                        inkscape:current-layer="svg2"/>
+    <title id="title4">Logo Scroll</title>
+    <metadata id="metadata6">image/svg+xml
+        <rdf:RDF>
+            <cc:Work rdf:about="">
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g id="g8">
+        <path d="m 274,354.5 c 45,10.25 71,-56 34.25,-65.75 l -230.75,-15.25 c 42.75,20.25 8.75,63.25 -35.5,59.25 l 232.25,22 z"
+              id="path10" stroke-width="2px" stroke="#000000" fill="rgb(250, 250, 210)"/>
+        <path d="m 307.5,288.5 c -33,-2.75 -27.25,26.5 -21.75,33 l -235,-18.5 c -8.75,-11.25 -0.25,-30.5 26.25,-29.75 l 228,15.25 z"
+              id="path12" stroke-width="2px" stroke="#000000" fill="rgb(250, 250, 210)"/>
+        <path d="m 82,25.25 c 96.25,20.5 -123,292 -41,307.25 l 237,22.5 c -107,-34.75 141.25,-296.75 47.75,-325.75 l -243.75,-4 z"
+              id="path14" stroke-width="2px" stroke="#000000" fill="rgb(250, 250, 210)"/>
+        <path d="m 323,45 c 6.25,4.75 16.5,27 -7,30 l -260.5,-6.5 c 27.75,-9.5 17.5,-20 10.5,-27.5 l 257,4 z"
+              id="path16" stroke-width="2px" stroke="#000000" fill="rgb(250, 250, 210)"/>
+        <path d="m 319.25,29.25 c -28,10.75 -26.25,41.25 -11,45.75 l -253,-6 c -11,0 -17,-43.25 25.75,-44 l 238.5,4.25 z"
+              id="path18" stroke-width="2px" stroke="#000000" fill="rgb(250, 250, 210)"/>
+        <text font-family="Bogboo" font-size="86px" font-style="italic" font-weigh="bold"
+              transform="matrix(0.766,-0.642,0.643,0.766,0,0)" id="text20" x="-165" y="295" xml:space="default"
+              fill="url(#grad1)">LopSpec
+        </text>
+    </g>
+</svg>

@@ -2,6 +2,7 @@
 *.phar
 behat.yml
 composer.lock
+junk*.*
 phpspec.phar
 .idea/
 vendor/

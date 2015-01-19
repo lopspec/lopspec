@@ -22,8 +22,9 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "dragonrun1/prophecy": "~1.1",
-        "dragonrun1/php-diff": "~1.0.0",
+        "dragonrun1/file_path_normalizer": "~1.0",
+        "dragonrun1/prophecy": "dev-master",
+        "dragonrun1/php-diff": "dev-master",
         "sebastian/exporter": "~1.0",
         "symfony/console": "~2.3",
         "symfony/event-dispatcher": "~2.1",
@@ -34,11 +35,11 @@
     },
     "require-dev": {
         "behat/behat": "~3.0,>=3.0.11",
-        "dragonrun1/phpspec2-expect": "~1.0",
+        "dragonrun1/phpspec2-expect": "dev-master",
         "symfony/filesystem": "~2.1"
     },
     "suggest": {
-        "dragonrun1/nyan-formatters": "~1.0 – Adds Nyan formatters"
+        "dragonrun1/nyan-formatters": "dev-master – Adds Nyan formatters"
     },
     "autoload": {
         "psr-0": {
