@@ -10,7 +10,7 @@ Feature: Developer generates a named constructor
 
     namespace spec\CodeGeneration\NamedConstructor;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class UserSpec extends ObjectBehavior
@@ -34,7 +34,7 @@ Feature: Developer generates a named constructor
     }
 
     """
-  When I run phpspec and answer "y" when asked if I want to generate the code
+    When I run lopspec and answer "y" when asked if I want to generate the code
   Then the class in "src/CodeGeneration/NamedConstructor/User.php" should contain:
     """
     <?php
@@ -63,7 +63,7 @@ Feature: Developer generates a named constructor
 
     namespace spec\CodeGeneration\NamedConstructor\TooManyArguments;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class UserSpec extends ObjectBehavior
@@ -90,7 +90,7 @@ Feature: Developer generates a named constructor
     }
 
     """
-  When I run phpspec and answer "y" when asked if I want to generate the code
+    When I run lopspec and answer "y" when asked if I want to generate the code
   Then the class in "src/CodeGeneration/NamedConstructor/TooManyArguments/User.php" should contain:
     """
     <?php
@@ -118,7 +118,7 @@ Feature: Developer generates a named constructor
 
     namespace spec\CodeGeneration\NamedConstructor\TooFewArguments;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class UserSpec extends ObjectBehavior
@@ -145,7 +145,7 @@ Feature: Developer generates a named constructor
     }
 
     """
-  When I run phpspec and answer "y" when asked if I want to generate the code
+    When I run lopspec and answer "y" when asked if I want to generate the code
   Then the class in "src/CodeGeneration/NamedConstructor/TooFewArguments/User.php" should contain:
     """
     <?php
@@ -173,7 +173,7 @@ Feature: Developer generates a named constructor
 
     namespace spec\CodeGeneration\NamedConstructor\EqualArguments;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class UserSpec extends ObjectBehavior
@@ -200,7 +200,7 @@ Feature: Developer generates a named constructor
     }
 
     """
-    When I run phpspec and answer "y" when asked if I want to generate the code
+    When I run lopspec and answer "y" when asked if I want to generate the code
     Then the class in "src/CodeGeneration/NamedConstructor/EqualArguments/User.php" should contain:
     """
     <?php
@@ -232,7 +232,7 @@ Feature: Developer generates a named constructor
 
     namespace spec\CodeGeneration\NamedConstructor\OptionalArguments;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class UserSpec extends ObjectBehavior
@@ -259,7 +259,7 @@ Feature: Developer generates a named constructor
     }
 
     """
-  When I run phpspec and answer "y" when asked if I want to generate the code
+    When I run lopspec and answer "y" when asked if I want to generate the code
   Then the class in "src/CodeGeneration/NamedConstructor/OptionalArguments/User.php" should contain:
     """
     <?php

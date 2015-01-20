@@ -10,7 +10,7 @@ Feature: Developer uses string-start matcher
 
     namespace spec\Matchers\StringStartExample1;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class MovieSpec extends ObjectBehavior
@@ -37,5 +37,5 @@ Feature: Developer uses string-start matcher
     }
     """
 
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass

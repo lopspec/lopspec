@@ -5,7 +5,7 @@ Feature: Developer generates a class
 
   Scenario: Generating a class
     Given I have started describing the "CodeGeneration/ClassExample1/Markdown" class
-    When I run phpspec and answer "y" when asked if I want to generate the code
+    When I run lopspec and answer "y" when asked if I want to generate the code
     Then a new class should be generated in the "src/CodeGeneration/ClassExample1/Markdown.php":
       """
       <?php
@@ -28,7 +28,7 @@ Feature: Developer generates a class
         psr4_prefix: Behat\Tests
     """
     And I have started describing the "Behat/Tests/MyNamespace/Markdown" class
-    When I run phpspec and answer "y" when asked if I want to generate the code
+    When I run lopspec and answer "y" when asked if I want to generate the code
     Then a new class should be generated in the "src/MyNamespace/Markdown.php":
     """
     <?php
@@ -44,7 +44,7 @@ Feature: Developer generates a class
   @issue127
   Scenario: Generating a class with PSR0 must convert classname underscores to directory separator
     Given I have started describing the "CodeGeneration/ClassExample1/Text_Markdown" class
-    When I run phpspec and answer "y" when asked if I want to generate the code
+    When I run lopspec and answer "y" when asked if I want to generate the code
     Then a new class should be generated in the "src/CodeGeneration/ClassExample1/Text/Markdown.php":
       """
       <?php
@@ -60,7 +60,7 @@ Feature: Developer generates a class
   @issue127
   Scenario: Generating a class with PSR0 must not convert namespace underscores to directory separator
     Given I have started describing the "CodeGeneration/Class_Example2/Text_Markdown" class
-    When I run phpspec and answer "y" when asked if I want to generate the code
+    When I run lopspec and answer "y" when asked if I want to generate the code
     Then a new class should be generated in the "src/CodeGeneration/Class_Example2/Text/Markdown.php":
       """
       <?php
@@ -82,7 +82,7 @@ Feature: Developer generates a class
 
     use CodeGeneration\MethodExample2\UserRepository;
     use CodeGeneration\MethodExample2\User;
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class ForgotPasswordSpec extends ObjectBehavior
@@ -118,7 +118,7 @@ Feature: Developer generates a class
         public function findOneByEmail($email);
     }
     """
-    When I run phpspec and answer "y" when asked if I want to generate the code
+    When I run lopspec and answer "y" when asked if I want to generate the code
     Then the class in "src/CodeGeneration/MethodExample2/ForgotPassword.php" should contain:
     """
     <?php

@@ -1,16 +1,12 @@
 <?php
-
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
 use Fake\DialogHelper;
 use Fake\ReRunner;
+use LopSpec\Console\Application;
+use LopSpec\Matcher\MatchersProviderInterface;
 use Matcher\ApplicationOutputMatcher;
 use Matcher\ExitStatusMatcher;
 use Matcher\ValidJUnitXmlMatcher;
-use PhpSpec\Console\Application;
-use PhpSpec\Matcher\MatchersProviderInterface;
 use Symfony\Component\Console\Tester\ApplicationTester;
 
 /**
@@ -19,127 +15,103 @@ use Symfony\Component\Console\Tester\ApplicationTester;
 class ApplicationContext implements Context, MatchersProviderInterface
 {
     /**
-     * @var Application
+     * @Then :number example(s) should have been skipped
      */
-    private $application;
-
-    /**
-     * @var integer
-     */
-    private $lastExitCode;
-
-    /**
-     * @var ApplicationTester
-     */
-    private $tester;
-
-    /**
-     * @var DialogHelper
-     */
-    private $dialogHelper;
-
-    /**
-     * @var ReRunner
-     */
-    private $reRunner;
-
-    /**
-     * @beforeScenario
-     */
-    public function setupApplication()
+    public function exampleShouldHaveBeenSkipped($number)
     {
-        $this->application = new Application('2.1-dev');
-        $this->application->setAutoExit(false);
-
-        $this->tester = new ApplicationTester($this->application);
-
-        $this->setupDialogHelper();
-        $this->setupReRunner();
+        expect($this->tester)->toHaveOutput("($number skipped)");
     }
-
-    private function setupDialogHelper()
+    /**
+     * @Then :number example(s) should have been run
+     */
+    public function examplesShouldHaveBeenRun($number)
     {
-        $this->dialogHelper = new DialogHelper();
-
-        $helperSet = $this->application->getHelperSet();
-        $helperSet->set($this->dialogHelper);
+        expect($this->tester)->toHaveOutput("$number examples");
     }
-
-    private function setupReRunner()
+    /**
+     * Custom matchers
+     *
+     * @return array
+     */
+    public function getMatchers()
     {
-        $this->reRunner = new ReRunner;
-        $this->application->getContainer()->set('process.rerunner.platformspecific', $this->reRunner);
+        return [
+            new ApplicationOutputMatcher(),
+            new ValidJUnitXmlMatcher()
+        ];
     }
-
     /**
      * @Given I have started describing the :class class
      * @Given I start describing the :class class
      */
     public function iDescribeTheClass($class)
     {
-        $arguments = array(
+        $arguments = [
             'command' => 'describe',
             'class' => $class
-        );
-
-        expect($this->tester->run($arguments, array('interactive' => false)))->toBe(0);
+        ];
+        expect($this->tester->run($arguments,
+            ['interactive' => false]))->toBe(0);
     }
-
     /**
-     * @When I run phpspec (non interactively)
-     * @When I run phpspec using the :formatter format
-     * @When I run phpspec with the :option option
-     * @When /I run phpspec with option (?P<option>.*)/
-     * @When /I run phpspec (?P<interactive>interactively)$/
-     * @When /I run phpspec (?P<interactive>interactively) with the (?P<option>.*) option/
+     * @When I run lopspec (non interactively)
+     * @When I run lopspec using the :formatter format
+     * @When I run lopspec with the :option option
+     * @When /I run lopspec with option (?P<option>.*)/
+     * @When /I run lopspec (?P<interactive>interactively)$/
+     * @When /I run lopspec (?P<interactive>interactively) with the (?P<option>.*) option/
      */
-    public function iRunPhpspec($formatter = null, $option = null, $interactive=null)
+    public function iRunLopSpec(
+        $formatter = null,
+        $option = null,
+        $interactive = null
+    )
     {
-        $arguments = array (
+        $arguments = [
             'command' => 'run'
-        );
+        ];
 
         if ($formatter) {
             $arguments['--format'] = $formatter;
         }
 
         $this->addOptionToArguments($option, $arguments);
-
-        $this->lastExitCode = $this->tester->run($arguments, array('interactive' => (bool)$interactive));
+        $this->lastExitCode = $this->tester->run($arguments,
+            ['interactive' => (bool)$interactive]);
     }
-
     /**
-     * @When I run phpspec and answer :answer when asked if I want to generate the code
-     * @When I run phpspec with the option :option and (I) answer :answer when asked if I want to generate the code
+     * @When I run lopspec and answer :answer when asked if I want to generate the code
+     * @When I run lopspec with the option :option and (I) answer :answer when asked if I want to generate the code
      */
-    public function iRunPhpspecAndAnswerWhenAskedIfIWantToGenerateTheCode($answer, $option=null)
+    public function iRunLopSpecAndAnswerWhenAskedIfIWantToGenerateTheCode(
+        $answer,
+        $option = null
+    )
     {
-        $arguments = array (
+        $arguments = [
             'command' => 'run'
-        );
+        ];
 
         $this->addOptionToArguments($option, $arguments);
 
         $this->dialogHelper->setAnswer($answer=='y');
-
-        $this->lastExitCode = $this->tester->run($arguments, array('interactive' => true));
+        $this->lastExitCode = $this->tester->run($arguments,
+            ['interactive' => true]);
     }
-
     /**
-     * @param string $option
-     * @param array $arguments
+     * @Then I should be prompted for code generation
      */
-    private function addOptionToArguments($option, array &$arguments)
+    public function iShouldBePromptedForCodeGeneration()
     {
-        if ($option) {
-            if (preg_match('/(?P<option>[a-z-]+)=(?P<value>[a-z.]+)/', $option, $matches)) {
-                $arguments[$matches['option']] = $matches['value'];
-            } else {
-                $arguments['--' . trim($option, '"')] = true;
-            }
-        }
+        expect($this->dialogHelper)->toHaveBeenAsked();
     }
-
+    /**
+     * @Then I should not be prompted for code generation
+     */
+    public function iShouldNotBePromptedForCodeGeneration()
+    {
+        expect($this->dialogHelper)->toNotHaveBeenAsked();
+    }
     /**
      * @Then I should see :output
      * @Then I should see:
@@ -148,55 +120,6 @@ class ApplicationContext implements Context, MatchersProviderInterface
     {
         expect($this->tester)->toHaveOutput((string)$output);
     }
-
-    /**
-     * @Then I should be prompted for code generation
-     */
-    public function iShouldBePromptedForCodeGeneration()
-    {
-        expect($this->dialogHelper)->toHaveBeenAsked();
-    }
-
-    /**
-     * @Then I should not be prompted for code generation
-     */
-    public function iShouldNotBePromptedForCodeGeneration()
-    {
-        expect($this->dialogHelper)->toNotHaveBeenAsked();
-    }
-
-    /**
-     * @Then the suite should pass
-     */
-    public function theSuiteShouldPass()
-    {
-        expect($this->lastExitCode)->toBeLike(0);
-    }
-
-    /**
-     * @Then :number example(s) should have been skipped
-     */
-    public function exampleShouldHaveBeenSkipped($number)
-    {
-        expect($this->tester)->toHaveOutput("($number skipped)");
-    }
-
-    /**
-     * @Then :number example(s) should have been run
-     */
-    public function examplesShouldHaveBeenRun($number)
-    {
-        expect($this->tester)->toHaveOutput("$number examples");
-    }
-
-    /**
-     * @Then the exit code should be :code
-     */
-    public function theExitCodeShouldBe($code)
-    {
-        expect($this->lastExitCode)->toBeLike($code);
-    }
-
     /**
      * @Then I should see valid junit output
      */
@@ -204,7 +127,31 @@ class ApplicationContext implements Context, MatchersProviderInterface
     {
         expect($this->tester)->toHaveOutputValidJunitXml();
     }
-
+    /**
+     * @beforeScenario
+     */
+    public function setupApplication()
+    {
+        $this->application = new Application('2.1-dev');
+        $this->application->setAutoExit(false);
+        $this->tester = new ApplicationTester($this->application);
+        $this->setupDialogHelper();
+        $this->setupReRunner();
+    }
+    /**
+     * @Then the exit code should be :code
+     */
+    public function theExitCodeShouldBe($code)
+    {
+        expect($this->lastExitCode)->toBeLike($code);
+    }
+    /**
+     * @Then the suite should pass
+     */
+    public function theSuiteShouldPass()
+    {
+        expect($this->lastExitCode)->toBeLike(0);
+    }
     /**
      * @Then the tests should be rerun
      */
@@ -212,7 +159,6 @@ class ApplicationContext implements Context, MatchersProviderInterface
     {
         expect($this->reRunner)->toHaveBeenRerun();
     }
-
     /**
      * @Then the tests should not be rerun
      */
@@ -220,17 +166,52 @@ class ApplicationContext implements Context, MatchersProviderInterface
     {
         expect($this->reRunner)->toNotHaveBeenRerun();
     }
-
     /**
-     * Custom matchers
-     *
-     * @return array
+     * @param string $option
+     * @param array  $arguments
      */
-    public function getMatchers()
+    private function addOptionToArguments($option, array &$arguments)
     {
-        return array(
-            new ApplicationOutputMatcher(),
-            new ValidJUnitXmlMatcher()
-        );
+        if ($option) {
+            if (preg_match('/(?P<option>[a-z-]+)=(?P<value>[a-z.]+)/', $option,
+                $matches)) {
+                $arguments[$matches['option']] = $matches['value'];
+            } else {
+                $arguments['--' . trim($option, '"')] = true;
+            }
+        }
     }
+    private function setupDialogHelper()
+    {
+        $this->dialogHelper = new DialogHelper();
+        $helperSet = $this->application->getHelperSet();
+        $helperSet->set($this->dialogHelper);
+    }
+    private function setupReRunner()
+    {
+        $this->reRunner = new ReRunner;
+        $this->application->getContainer()
+                          ->set('process.rerunner.platformspecific',
+                              $this->reRunner);
+    }
+    /**
+     * @var Application
+     */
+    private $application;
+    /**
+     * @var DialogHelper
+     */
+    private $dialogHelper;
+    /**
+     * @var integer
+     */
+    private $lastExitCode;
+    /**
+     * @var ReRunner
+     */
+    private $reRunner;
+    /**
+     * @var ApplicationTester
+     */
+    private $tester;
 }

@@ -5,7 +5,7 @@ Feature: Developer generates a class
 
   Scenario: Rerun after class generation
     Given I have started describing the "CodeGeneration/RerunExample1/Markdown" class
-    When I run phpspec and answer "y" when asked if I want to generate the code
+    When I run lopspec and answer "y" when asked if I want to generate the code
     Then the tests should be rerun
 
   Scenario: Rerun after method generation
@@ -15,7 +15,7 @@ Feature: Developer generates a class
 
       namespace spec\CodeGeneration\RerunExample2;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class MarkdownSpec extends ObjectBehavior
@@ -38,17 +38,17 @@ Feature: Developer generates a class
       }
 
       """
-    When I run phpspec and answer "y" when asked if I want to generate the code
+    When I run lopspec and answer "y" when asked if I want to generate the code
     Then the tests should be rerun
 
   Scenario: No rerun if code generation is off
     Given I have started describing the "CodeGeneration/RerunExample3/Markdown" class
-    When I run phpspec non interactively
+    When I run lopspec non interactively
     Then the tests should not be rerun
 
   Scenario: No rerun if rerun flag is passed
     Given I have started describing the "CodeGeneration/RerunExample4/Markdown" class
-    When I run phpspec with the option "no-rerun" and I answer "y" when asked if I want to generate the code
+    When I run lopspec with the option "no-rerun" and I answer "y" when asked if I want to generate the code
     Then the tests should not be rerun
 
   Scenario: No rerun if rerun flag is passed
@@ -57,5 +57,5 @@ Feature: Developer generates a class
       """
       rerun: false
       """
-    When I run phpspec and answer "y" when asked if I want to generate the code
+    When I run lopspec and answer "y" when asked if I want to generate the code
     Then the tests should not be rerun

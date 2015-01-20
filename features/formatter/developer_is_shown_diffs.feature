@@ -10,7 +10,7 @@ Feature: Developer is shown diffs
 
       namespace spec\Diffs\DiffExample1;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class ClassWithStringsSpec extends ObjectBehavior
@@ -37,7 +37,7 @@ Feature: Developer is shown diffs
       }
 
       """
-    When I run phpspec with the "verbose" option
+    When I run lopspec with the "verbose" option
     Then I should see:
       """
        @@ -1,1 +1,1 @@
@@ -52,7 +52,7 @@ Feature: Developer is shown diffs
 
       namespace spec\Diffs\DiffExample2;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class ClassWithArraysSpec extends ObjectBehavior
@@ -85,7 +85,7 @@ Feature: Developer is shown diffs
       }
 
       """
-    When I run phpspec with the "verbose" option
+    When I run lopspec with the "verbose" option
     Then I should see:
       """
             @@ -1,4 +1,4 @@
@@ -104,7 +104,7 @@ Feature: Developer is shown diffs
 
       namespace spec\Diffs\DiffExample3;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class ClassWithObjectsSpec extends ObjectBehavior
@@ -139,7 +139,7 @@ Feature: Developer is shown diffs
       }
 
       """
-    When I run phpspec with the "verbose" option
+    When I run lopspec with the "verbose" option
     Then I should see:
       """
             -    'i' => 1

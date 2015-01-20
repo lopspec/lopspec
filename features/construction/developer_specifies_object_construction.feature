@@ -10,7 +10,7 @@ Feature: Developer specifies object construction
 
       namespace spec\Runner\ConstructorExample1;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class ClassWithConstructorSpec extends ObjectBehavior
@@ -44,7 +44,7 @@ Feature: Developer specifies object construction
       }
 
       """
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass
 
   Scenario: Class is initialized using a static factory method and a collaborator as argument
@@ -54,7 +54,7 @@ Feature: Developer specifies object construction
 
       namespace spec\Runner\ConstructorExample2;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class ClassWithStaticFactoryMethodSpec extends ObjectBehavior
@@ -93,7 +93,7 @@ Feature: Developer specifies object construction
       }
 
       """
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass
 
   Scenario: Default static constructor parameter is overridden in example
@@ -103,7 +103,7 @@ Feature: Developer specifies object construction
 
       namespace spec\Runner\ConstructorExample3;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class ClassWithConstructorSpec extends ObjectBehavior
@@ -143,7 +143,7 @@ Feature: Developer specifies object construction
       }
 
       """
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass
 
 
@@ -154,7 +154,7 @@ Feature: Developer specifies object construction
 
       namespace spec\Runner\ConstructorExample4;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class ClassWithStaticFactoryMethodSpec extends ObjectBehavior
@@ -199,7 +199,7 @@ Feature: Developer specifies object construction
       }
 
       """
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass
 
   Scenario: Static constructor set in example used instead factory method set in let
@@ -209,7 +209,7 @@ Feature: Developer specifies object construction
 
     namespace spec\Runner\ConstructorExample7;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class ClassWithStaticFactoryMethodAndConstructorSpec extends ObjectBehavior
@@ -264,7 +264,7 @@ Feature: Developer specifies object construction
     }
 
     """
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass
 
   Scenario: Factory method set in example used instead of constructor set in let
@@ -274,7 +274,7 @@ Feature: Developer specifies object construction
 
     namespace spec\Runner\ConstructorExample8;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class ClassWithStaticFactoryMethodAndConstructorSpec extends ObjectBehavior
@@ -330,7 +330,7 @@ Feature: Developer specifies object construction
     }
 
     """
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass
 
     Scenario: Developer cannot redefine constructor parameters if object is already instantiated
@@ -340,7 +340,7 @@ Feature: Developer specifies object construction
 
     namespace spec\Runner\ConstructorExample9;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class ClassConstructorSpec extends ObjectBehavior
@@ -376,7 +376,7 @@ Feature: Developer specifies object construction
     }
 
     """
-    When I run phpspec
+      When I run lopspec
     Then I should see "you can not change object construction method when it is already instantiated"
 
   Scenario: Developer cannot redefine factory method if object is already instantiated
@@ -386,7 +386,7 @@ Feature: Developer specifies object construction
 
     namespace spec\Runner\ConstructorExample10;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class ClassWithFactoryMethodSpec extends ObjectBehavior
@@ -432,5 +432,5 @@ Feature: Developer specifies object construction
     }
 
     """
-    When I run phpspec
+    When I run lopspec
     Then I should see "you can not change object construction method when it is already instantiated"

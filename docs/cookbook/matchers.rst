@@ -1,13 +1,13 @@
 Matchers
 ========
 
-You use matchers in **phpspec** to describe how an object should behave.
+You use matchers in **lopspec** to describe how an object should behave.
 They are like assertions in xUnit but with a focus on specifying behaviour
 instead of verifying output. You use the matchers prefixed by ``should`` or
 ``shouldNot`` as appropriate.
 
 
-**phpspec** has 13 built-in matchers, described in more detail here. Many of these
+**lopspec** has 13 built-in matchers, described in more detail here. Many of these
 matchers have aliases which you can use to make your specifications easy to
 read.
 
@@ -23,7 +23,7 @@ the Identity matcher. It compares the result using the identity operator: ``===`
 
     namespace spec;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
 
     class MovieSpec extends ObjectBehavior
     {
@@ -53,7 +53,7 @@ follows the PHP rules for loose type comparison.
 
     namespace spec;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
 
     class MovieSpec extends ObjectBehavior
     {
@@ -80,7 +80,7 @@ the example easier to read.
 
     namespace spec;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
 
     class MovieSpec extends ObjectBehavior
     {
@@ -98,7 +98,7 @@ You can also write this as:
 
     namespace spec;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
 
     class MovieSpec extends ObjectBehavior
     {
@@ -120,7 +120,7 @@ passing an exception object to shouldThrow:
 
     namespace spec;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
 
     class MovieSpec extends ObjectBehavior
     {
@@ -144,7 +144,7 @@ or that it extends a class.
 
     namespace spec;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
 
     class MovieSpec extends ObjectBehavior
     {
@@ -174,7 +174,7 @@ a boolean.
 
     namespace spec;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
 
     class MovieSpec extends ObjectBehavior
     {
@@ -225,7 +225,7 @@ The returned value could be an array or an object that implements the
 
     namespace spec;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
 
     class MovieSpec extends ObjectBehavior
     {
@@ -249,7 +249,7 @@ e.g, ``is_bool``, ``is_integer``, ``is_float``, etc.
 
     namespace spec;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
 
     class MovieSpec extends ObjectBehavior
     {
@@ -269,7 +269,7 @@ ArrayContain Matcher
 --------------------
 
 You can specify that a method should return an array that contains a given
-value with the ArrayContain matcher. **phpspec** matches the value by
+value with the ArrayContain matcher. **lopspec** matches the value by
 identity (``===``).
 
 .. code-block:: php
@@ -278,7 +278,7 @@ identity (``===``).
 
     namespace spec;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
 
     class MovieSpec extends ObjectBehavior
     {
@@ -301,7 +301,7 @@ with a specific key using the ArrayKey matcher.
 
     namespace spec;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
 
     class MovieSpec extends ObjectBehavior
     {
@@ -324,7 +324,7 @@ starting with a given substring.
 
     namespace spec;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
 
     class MovieSpec extends ObjectBehavior
     {
@@ -347,7 +347,7 @@ ending with a given substring.
 
     namespace spec;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
 
     class MovieSpec extends ObjectBehavior
     {
@@ -370,7 +370,7 @@ matching a given regular expression.
 
     namespace spec;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
 
     class MovieSpec extends ObjectBehavior
     {
@@ -392,8 +392,8 @@ You can create custom matchers using the Inline matcher.
 
     namespace spec;
 
-    use PhpSpec\ObjectBehavior;
-    use PhpSpec\Matcher\InlineMatcher;
+    use LopSpec\ObjectBehavior;
+    use LopSpec\Matcher\InlineMatcher;
 
     class MovieSpec extends ObjectBehavior
     {

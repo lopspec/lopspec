@@ -1,0 +1,705 @@
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    background: transparent;
+  border: 0;
+  font-size: 100%;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+  vertical-align: baseline;
+}
+body {
+  line-height: 1;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+nav ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+a {
+    background: transparent;
+    font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+/* change colours to suit your needs */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+/* change colours to suit your needs */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+del {
+  text-decoration: line-through;
+}
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* change border colour to suit your needs */
+hr {
+  border: 0;
+  border-top: 1px solid #cccccc;
+    display: block;
+    height: 1px;
+  margin: 1em 0;
+  padding: 0;
+}
+input, select {
+  vertical-align: middle;
+}
+#logo-behat {
+    background: url(images/skel/behat-logo.png);
+  content: '';
+  float: left;
+  height: 89px;
+    text-indent: -9999px;
+    width: 239px;
+}
+#logo-mink {
+    background: url(images/skel/mink-logo.png);
+  content: '';
+  float: left;
+  height: 89px;
+    text-indent: -9999px;
+    width: 239px;
+}
+body {
+    background: #fff url(images/skel/bg.jpg) repeat-x top left;
+  color: #b5b5b5;
+  font-family: 'Trebuchet MS';
+}
+body > header, body > section, body > footer {
+  clear: left;
+  margin: 0px auto;
+    padding: 60px;
+    width: 840px;
+}
+body > header {
+  margin-top:20px;
+  padding:20px 60px 20px 60px;
+}
+body > header > nav {
+  float: left;
+  margin-left: 20px;
+    margin-top: 34px;
+}
+body > header > nav li {
+  float: left;
+  margin: 0px 2px;
+  padding: 2px 7px;
+}
+body > header > nav li a {
+  color: #979797;
+    display: block;
+  font-family: 'Lobster', arial, serif;
+  font-size: 20px;
+  text-decoration: none;
+}
+body > header > nav li a:hover {
+  color: #ccc;
+}
+body > header > nav li.active {
+  background: url(images/skel/menu-bg.png);
+  -moz-transform: skew(-10deg);
+  -webkit-transform: skew(-10deg);
+}
+body > header > nav li.active a {
+  color: #fff;
+  -moz-transform: skew(10deg);
+  -webkit-transform: skew(10deg);
+}
+body > section.main > dl {
+  background: url(images/skel/content-splitter.png) 465px -30px no-repeat;
+  min-height: 228px;
+}
+body > section.main > dl p {
+  font-size: 15px;
+  line-height: 24px;
+}
+body > section.main > dl dt h1, body > section.main > dl dt h2 {
+  color: #b7b7b7;
+  font-size: 20px;
+  font-weight: normal;
+    margin-bottom: 10px;
+}
+body > section.main > dl dt h1 span, body > section.main > dl dt h2 span {
+  color: #000;
+}
+body > section.main > dl dt h1 span.behat, body > section.main > dl dt h2 span.behat {
+  font-family: 'Lobster', arial, serif;
+  font-size: 28px;
+    margin-right: 5px;
+}
+body > section.main > dl .intro {
+  float: left;
+  padding-right: 20px;
+    width: 445px;
+}
+body > section.main > dl dt.install {
+  margin-top: -30px;
+}
+body > section.main > dl dd.install {
+  margin-bottom: 40px;
+}
+body > section.main > dl .install {
+  float: right;
+  width: 350px;
+}
+body > section.main > dl .install pre {
+    background: #fff;
+    border-radius: 0px 10px 0px 10px;
+    -moz-border-radius: 0px 10px 0px 10px;
+    -webkit-border-radius: 0px 10px 0px 10px;
+    color: #000;
+  float: left;
+  font-family: Courier;
+  font-size: 12px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 15px 10px;
+    width: 320px;
+}
+body > section.main > dl .install pre .prompt {
+  color: #d03e3c;
+}
+body > section.main > dl .install pre.pear {
+  background: #ffffff url(images/skel/install-pear.jpg) no-repeat left bottom;
+}
+body > section.main > dl .install pre.github {
+  background: #ffffff url(images/skel/install-github.jpg) no-repeat left bottom;
+}
+body > section.main > dl .preview {
+  float: left;
+  width: 100%;
+}
+body > section.main > dl .preview dl {
+  background: red;
+  margin-top: 20px;
+    position: relative;
+    width: 830px;
+}
+body > section.main > dl .preview dl dt {
+  cursor: pointer;
+    float: left;
+  margin-right: 630px;
+  padding: 10px;
+    position: relative;
+    width: 180px;
+    z-index: 3;
+}
+body > section.main > dl .preview dl dt h3 {
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+    position: relative;
+}
+body > section.main > dl .preview dl dt h3 span {
+  color: #8b8b8b;
+    float: left;
+  font-size: 12px;
+  font-weight: normal;
+    margin-top: 5px;
+    width: 100%;
+}
+body > section.main > dl .preview dl dt:hover {
+  background: #313131;
+}
+body > section.main > dl .preview dl dt.active {
+  background: #ccc;
+}
+body > section.main > dl .preview dl dt.active h3, body > section.main > dl .preview dl dt.active span {
+  color: #000 !important;
+}
+body > section.main > dl .preview dl dt.active:after {
+    background: #ccc;
+  content: '';
+  display: block;
+    height: 20px;
+  position: absolute;
+  right: -11px;
+  top: 15px;
+    transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+    width: 20px;
+}
+body > section.main > dl .preview dl dd {
+  background: #fff;
+    border-radius: 0px 10px 0px 10px;
+  -moz-border-radius: 0px 10px 0px 10px;
+  -webkit-border-radius: 0px 10px 0px 10px;
+    display: none;
+    height: 235px;
+    padding: 20px 30px;
+    position: absolute;
+    right: 0px;
+    top: -10px;
+    width: 570px;
+}
+body > section.main > dl .preview dl dd pre {
+  color: #000;
+  font-size: 16px;
+}
+body > section.main > dl .preview dl dd.active {
+  display: block;
+}
+body > section.main > dl .preview dl dd .info {
+    background: #000;
+  bottom: 5px;
+  color: #fff;
+    float: right;
+  font-size: 18px;
+  opacity: 0.5;
+    padding: 10px 15px;
+    position: absolute;
+    right: 5px;
+}
+body > footer {
+  padding-bottom: 0px;
+  padding-top:0px;
+    position: relative;
+
+  /*border-top:1px solid #2a2a2a;
+  padding-top:40px;*/
+}
+body > footer dl, section.documentation > footer dl {
+  float: left;
+  margin-bottom: 20px;
+    margin-right: 50px;
+    margin-top: 10px;
+}
+section.documentation > footer dl + dl {
+    float: right;
+}
+body > footer dl dt, section.documentation > footer dl dt {
+  color: #b3b3b3;
+  font-family: 'Lobster', arial, serif;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+body > footer dl dd, section.documentation > footer dl dd {
+  margin-bottom: 3px;
+}
+body > footer dl dd a, section.documentation > footer dl dd a {
+  color: #c9cbcb;
+  font-size: 14px;
+  font-weight: normal;
+  text-decoration: none;
+}
+body > footer dl dd a:hover, section.documentation > footer dl dd a:hover {
+  text-decoration: underline;
+}
+body > footer .clear {
+  clear: both;
+}
+body > footer .sponsor {
+    bottom: 25px;
+  position: absolute;
+  right: 70px;
+  width: 230px;
+}
+body > footer .sponsor span {
+    bottom: 5px;
+  color: #b3b3b3;
+  font-family: 'Lobster', arial, serif;
+  font-size: 18px;
+  position: absolute;
+}
+body > footer .sponsor a.knp {
+    background: url(images/skel/knp-logo.png);
+    border: none;
+  content: '';
+    float: right;
+    height: 29px;
+  opacity:0.3;
+  text-indent: -9999px;
+  width: 130px;
+}
+strong {
+    font-weight:bold !important;
+}
+
+.main-menu {
+    border-bottom: 1px solid #c4c4c4;
+    list-style: none;
+  position:absolute;
+  top: -10px;
+  width: 820px;
+}
+
+.main-menu li {
+    border-top: 5px solid #727272;
+  float:left;
+  padding:8px 0px;
+    text-align: center;
+    width: 164px;
+}
+
+.main-menu li:hover {
+  border-color:#f1f1f1;
+}
+
+.main-menu li.active {
+  border-color:#000;
+}
+
+.main-menu li a {
+  color:#4f4f4f;
+  padding:0px 20px;
+  padding-bottom:22px;
+    text-decoration: none;
+}
+
+.main-menu li.active a {
+  color:#000 !important;
+    text-decoration: none !important;
+}
+
+.main-menu li.right {
+  float:right;
+}
+
+
+body > section.main h1, body > section.main h2, body > section.intro h1 {
+  font-family: 'Trebuchet MS';
+  font-size:22px !important;
+    font-style: italic;
+  margin-bottom:10px !important;
+  padding:0px;
+}
+body > section.main h1, body > section.intro h1 {
+  font-size:38px !important;
+  line-height:48px !important;
+  text-align:center;
+}
+body > section.main h2 {
+  text-align:center;
+}
+body > section.main h1 span, body > section.main h2 span, body > section.intro h1 span {
+  color: #000;
+}
+
+
+body > section.main > .intro {
+  margin:80px auto;
+  margin-top:30px;
+    width: 520px;
+}
+body > section.main p {
+  font-size: 15px;
+  line-height: 24px;
+}
+
+body > section.main > .intro-right {
+  float:right;
+}
+
+body > section.main > .preview {
+  float: left;
+  margin-bottom:90px;
+    margin-top: 10px;
+    width: 100%;
+}
+body > section.main > .last {
+  margin-bottom:160px;
+}
+body > section.main > .preview dl {
+  background: red;
+  margin-top: 20px;
+    position: relative;
+    width: 830px;
+}
+body > section.main > .preview dl dt {
+  cursor: pointer;
+    float: left;
+  margin-right: 630px;
+  padding: 10px;
+    position: relative;
+    width: 180px;
+    z-index: 3;
+}
+body > section.main > .preview dl dt div {
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+    position: relative;
+}
+body > section.main > .preview dl dt div span {
+  color: #8b8b8b;
+    float: left;
+  font-size: 12px;
+  font-weight: normal;
+    margin-top: 5px;
+    width: 100%;
+}
+body > section.main > .preview dl dt:hover {
+  background: #313131;
+  border-right:1px solid #1e1e1e;
+    width: 179px;
+}
+body > section.main > .preview dl dt.active:hover {
+  border:none;
+    width: 180px;
+}
+body > section.main > .preview dl dt.active {
+  background: #ccc;
+}
+body > section.main > .preview dl dt.active div, body > section.main > .preview dl dt.active span {
+  color: #000 !important;
+}
+body > section.main > .preview dl dt.active:after {
+    background: #ccc;
+  content: '';
+  display: block;
+    height: 20px;
+  position: absolute;
+  right: -10px;
+  top: 15px;
+    transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+    width: 20px;
+}
+body > section.main > .preview dl dd {
+  background: #fff;
+    border-radius: 0px 10px 0px 10px;
+  -moz-border-radius: 0px 10px 0px 10px;
+  -webkit-border-radius: 0px 10px 0px 10px;
+    display: none;
+    height: 235px;
+    padding: 20px;
+    position: absolute;
+    right: 0px;
+    top: -10px;
+    width: 590px;
+}
+body > section.main > .preview dl dd pre {
+  color: #000;
+  font-size: 15px;
+}
+body > section.main > .preview dl dd.active {
+  display: block;
+}
+body > section.main > .preview dl dd .info {
+    background: #000;
+  bottom: 5px;
+  color: #fff;
+    float: right;
+  font-size: 18px;
+  opacity: 0.5;
+    padding: 10px 15px;
+    position: absolute;
+    right: 5px;
+}
+
+
+body > section.main .docs {
+    color: #4f4f4f;
+    float:left;
+    font-family: 'Trebuchet MS';
+    font-size: 22px !important;
+    font-style: italic;
+    height:100px;
+    line-height:30px;
+    margin-right: 50px;
+    margin-top: 30px;
+    padding-left:80px;
+    text-decoration:none;
+    width: 150px;
+}
+body > section.main .docs:hover {
+    color:#000;
+    text-decoration:underline;
+}
+
+body > section.main .docs.training {
+    background:url(images/training.png) no-repeat;
+}
+
+body > section.main .docs.quick-intro {
+    background:url(images/page.png) no-repeat;
+}
+
+body > section.main .docs.guides {
+    background:url(images/page_full.png) no-repeat;
+}
+
+
+body > section.main > .getting-started .left {
+    float:left;
+    margin-top: 30px;
+    width:400px;
+}
+
+body > section.main > .getting-started .right {
+    float:right;
+    margin-top: 30px;
+    width:400px;
+}
+
+body > section.main .highlight hr {
+  border-color:#4f4f4f;
+}
+
+section.intro {
+  background: url(images/page-splitter.png) bottom left repeat-x;
+    padding: 50px 0px;
+    width: 100%;
+}
+
+section.intro > .intro {
+  margin:80px auto;
+  margin-top:100px;
+    width: 650px;
+}
+
+section.intro #logo {
+  background: url(images/logo.png);
+    content: '';
+  display:block;
+    height: 142px;
+  margin:0px auto;
+    text-indent: -9999px;
+    width: 261px;
+}
+
+section.intro .preview {
+  margin:100px auto;
+  margin-top:130px;
+    width: 535px;
+}
+
+section.intro .preview a {
+  color: #454545;
+    display: block;
+  float:left;
+    font-family: 'Trebuchet MS';
+    font-size: 28px;
+  font-style:italic;
+  line-height:32px;
+    margin-right: 37px;
+    padding-left: 80px;
+    text-decoration: none;
+    width: 165px;
+}
+
+section.intro .preview a:hover {
+  color: #000;
+  text-decoration:underline;
+}
+
+section.intro .preview a.repo {
+  background: url(images/search.png) no-repeat left 10px;
+}
+
+section.intro .preview a.manual {
+  background: url(images/docs.png) no-repeat left 10px;
+  margin-right:0px;
+}

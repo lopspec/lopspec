@@ -10,7 +10,7 @@ Feature: Developer uses object-state matcher
 
     namespace spec\Matchers\ObjectStateExample1;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class CarSpec extends ObjectBehavior
@@ -37,7 +37,7 @@ Feature: Developer uses object-state matcher
     }
     """
 
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass
 
   Scenario: "Be" alias matches using the object-state matcher
@@ -47,7 +47,7 @@ Feature: Developer uses object-state matcher
 
     namespace spec\Matchers\ObjectStateExample2;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class CarSpec extends ObjectBehavior
@@ -74,5 +74,5 @@ Feature: Developer uses object-state matcher
     }
     """
 
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass

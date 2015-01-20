@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block htmltitle %}
+<title>lopspec</title>
+{% endblock %}
+
+{% block content %}
+<section class="intro">
+    <a id="logo" href="/">lopspec</a>
+
+    <div class="intro">
+        <h1>
+            A <span>php</span> tool set to drive emergent design by <span>specification</span>.
+        </h1>
+    </div>
+
+    <div class="preview">
+        <a href="http://github.com/lopspec/lopspec" class="docs repo">
+            lopspec<br>repository
+        </a>
+        <a href="{{ pathto('manual/introduction') }}" class="docs manual">
+            lopspec<br>manual
+        </a>
+        <div style="clear:both"></div>
+    </div>
+</section>
+
+<section class="documentation">
+    {% block body %}{% endblock %}
+</section>
+{% endblock %}

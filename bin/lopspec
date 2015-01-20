@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+
+define('LOPSPEC_VERSION', '1.0.0RC');
+
+$mess = 'You must set up the project dependencies, run the following commands:'
+        . PHP_EOL . 'curl -s http://getcomposer.org/installer | php' . PHP_EOL
+        . 'php composer.phar install' . PHP_EOL;
+/*
+ * Find auto loader from one of
+ * vendor/bin/
+ * OR ./
+ * OR bin/
+ * OR lib/PhpEOL/
+ * OR vendor/PhpEOL/PhpEOL/bin/
+ */
+(@include_once dirname(__DIR__) . '/autoload.php')
+|| (@include_once __DIR__ . '/vendor/autoload.php')
+|| (@include_once dirname(__DIR__) . '/vendor/autoload.php')
+|| (@include_once dirname(dirname(__DIR__)) . '/vendor/autoload.php')
+|| (@include_once dirname(dirname(dirname(__DIR__))) . '/autoload.php')
+|| die($mess);
+
+$app = new PhpSpec\Console\Application(LOPSPEC_VERSION);
+$app->run();

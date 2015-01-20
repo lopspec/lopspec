@@ -10,9 +10,9 @@ Feature: Developer skips examples
 
       namespace spec\Runner\SpecExample;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
-      use PhpSpec\Exception\Example\SkippingException;
+      use LopSpec\Exception\Example\SkippingException;
 
       class MarkdownSpec extends ObjectBehavior
       {
@@ -37,6 +37,6 @@ Feature: Developer skips examples
       }
 
       """
-    When I run phpspec using the "dot" format
+    When I run lopspec using the "dot" format
     Then 1 example should have been skipped
     But the suite should pass

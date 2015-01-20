@@ -10,7 +10,7 @@ Feature: Developer is told about pending specs
 
       namespace spec\Runner\PendingExample1;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
 
       class MarkdownSpec extends ObjectBehavior
       {
@@ -19,7 +19,7 @@ Feature: Developer is told about pending specs
           }
       }
       """
-    When I run phpspec using the "pretty" format
+    When I run lopspec using the "pretty" format
     Then I should see:
       """
          9  - converts plain text to html paragraphs
@@ -37,7 +37,7 @@ Feature: Developer is told about pending specs
 
       namespace spec\Runner\PendingExample2;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
 
       class MarkdownSpec extends ObjectBehavior
       {
@@ -53,7 +53,7 @@ Feature: Developer is told about pending specs
           }
       }
       """
-    When I run phpspec using the "pretty" format
+    When I run lopspec using the "pretty" format
     Then I should see:
       """
         9  - converts plain text to html paragraphs
@@ -72,7 +72,7 @@ Feature: Developer is told about pending specs
 
       namespace spec\Runner\PendingExample3;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
 
       class MarkdownSpec extends ObjectBehavior
       {
@@ -83,7 +83,7 @@ Feature: Developer is told about pending specs
           }
       }
       """
-    When I run phpspec using the "pretty" format
+    When I run lopspec using the "pretty" format
     Then I should see:
       """
       1 examples (1 passed)

@@ -2,34 +2,43 @@
 
 namespace Matcher;
 
-use PhpSpec\Exception\Example\FailureException;
-use PhpSpec\Matcher\MatcherInterface;
+use LopSpec\Exception\Example\FailureException;
+use LopSpec\Matcher\MatcherInterface;
 use Symfony\Component\Console\Tester\ApplicationTester;
-
-const JUNIT_XSD_PATH = '/src/PhpSpec/Resources/schema/junit.xsd';
+const JUNIT_XSD_PATH = '/src/LopSpec/Resources/schema/junit.xsd';
 
 class ValidJUnitXmlMatcher implements MatcherInterface
 {
     /**
-     * Checks if matcher supports provided subject and matcher name.
+     * Returns matcher priority.
+     *
+     * @return integer
+     */
+    public function getPriority()
+    {
+        return 51;
+    }
+    /**
+     * Evaluates negative match.
      *
      * @param string $name
-     * @param mixed $subject
-     * @param array $arguments
+     * @param mixed  $subject
+     * @param array  $arguments
      *
-     * @return Boolean
+     * @throws FailureException
      */
-    public function supports($name, $subject, array $arguments)
+    public function negativeMatch($name, $subject, array $arguments)
     {
-        return ($name == 'haveOutputValidJunitXml' && $subject instanceof ApplicationTester);
+        throw new FailureException('Negative JUnit matcher not implemented');
     }
-
     /**
      * Evaluates positive match.
      *
      * @param string $name
-     * @param mixed $subject
-     * @param array $arguments
+     * @param mixed  $subject
+     * @param array  $arguments
+     *
+     * @throws FailureException
      */
     public function positiveMatch($name, $subject, array $arguments)
     {
@@ -41,26 +50,18 @@ class ValidJUnitXmlMatcher implements MatcherInterface
             ));
         }
     }
-
     /**
-     * Evaluates negative match.
+     * Checks if matcher supports provided subject and matcher name.
      *
      * @param string $name
      * @param mixed $subject
      * @param array $arguments
-     */
-    public function negativeMatch($name, $subject, array $arguments)
-    {
-        throw new FailureException('Negative JUnit matcher not implemented');
-    }
-
-    /**
-     * Returns matcher priority.
      *
-     * @return integer
+     * @return Boolean
      */
-    public function getPriority()
+    public function supports($name, $subject, array $arguments)
     {
-        return 51;
+        return ($name == 'haveOutputValidJunitXml'
+                && $subject instanceof ApplicationTester);
     }
 }

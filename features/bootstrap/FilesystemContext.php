@@ -1,12 +1,9 @@
 <?php
-
-use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
+use LopSpec\Matcher\MatchersProviderInterface;
 use Matcher\FileExistsMatcher;
 use Matcher\FileHasContentsMatcher;
-use PhpSpec\Matcher\MatchersProviderInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
 /**
@@ -14,32 +11,30 @@ use Symfony\Component\Filesystem\Filesystem;
  */
 class FilesystemContext implements Context, MatchersProviderInterface
 {
-    /**
-     * @var string
-     */
-    private $workingDirectory;
-
-    /**
-     * @var Filesystem
-     */
-    private $filesystem;
-
     public function __construct()
     {
         $this->filesystem = new Filesystem();
     }
-
+    /**
+     * @return array
+     */
+    public function getMatchers()
+    {
+        return [
+            new FileExistsMatcher(),
+            new FileHasContentsMatcher()
+        ];
+    }
     /**
      * @beforeScenario
      */
     public function prepWorkingDirectory()
     {
-        $this->workingDirectory = tempnam(sys_get_temp_dir(), 'phpspec-behat');
+        $this->workingDirectory = tempnam(sys_get_temp_dir(), 'lopspec-behat');
         $this->filesystem->remove($this->workingDirectory);
         $this->filesystem->mkdir($this->workingDirectory);
         chdir($this->workingDirectory);
     }
-
     /**
      * @afterScenario
      */
@@ -47,15 +42,6 @@ class FilesystemContext implements Context, MatchersProviderInterface
     {
         $this->filesystem->remove($this->workingDirectory);
     }
-
-    /**
-     * @Given the bootstrap file :file contains:
-     */
-    public function theFileContains($file, PyStringNode $contents)
-    {
-        $this->filesystem->dumpFile($file, (string)$contents);
-    }
-
     /**
      * @Given the class file :file contains:
      * @Given the spec file :file contains:
@@ -65,24 +51,20 @@ class FilesystemContext implements Context, MatchersProviderInterface
         $this->theFileContains($file, $contents);
         require_once($file);
     }
-
     /**
      * @Given the config file contains:
      */
     public function theConfigFileContains(PyStringNode $contents)
     {
-        $this->theFileContains('phpspec.yml', $contents);
+        $this->theFileContains('lopspec.yml', $contents);
     }
-
     /**
-     * @Given there is no file :file
+     * @Given the bootstrap file :file contains:
      */
-    public function thereIsNoFile($file)
+    public function theFileContains($file, PyStringNode $contents)
     {
-        expect($file)->toNotExist();
-        expect(file_exists($file))->toBe(false);
+        $this->filesystem->dumpFile($file, (string)$contents);
     }
-
     /**
      * @Then the class in :file should contain:
      * @Then a new class/spec should be generated in the :file:
@@ -92,15 +74,20 @@ class FilesystemContext implements Context, MatchersProviderInterface
         expect($file)->toExist();
         expect($file)->toHaveContents($contents);
     }
-
     /**
-     * @return array
+     * @Given there is no file :file
      */
-    public function getMatchers()
+    public function thereIsNoFile($file)
     {
-        return array(
-            new FileExistsMatcher(),
-            new FileHasContentsMatcher()
-        );
+        expect($file)->toNotExist();
+        expect(file_exists($file))->toBe(false);
     }
+    /**
+     * @var Filesystem
+     */
+    private $filesystem;
+    /**
+     * @var string
+     */
+    private $workingDirectory;
 }

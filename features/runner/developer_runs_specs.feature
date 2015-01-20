@@ -5,7 +5,7 @@ Feature: Developer runs the specs
 
   Scenario: Running a spec with a class that doesn't exist
     Given I have started describing the "Runner/SpecExample1/Markdown" class
-    When I run phpspec
+    When I run lopspec
     Then I should see "class Runner\SpecExample1\Markdown does not exist"
 
   Scenario: Reporting success when running a spec with correctly implemented class
@@ -15,7 +15,7 @@ Feature: Developer runs the specs
 
       namespace spec\Runner\SpecExample2;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class MarkdownSpec extends ObjectBehavior
@@ -42,7 +42,7 @@ Feature: Developer runs the specs
       }
 
       """
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass
 
     @issue214
@@ -53,7 +53,7 @@ Feature: Developer runs the specs
 
       namespace spec\Runner\SpecExample3;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class MarkdownSpec extends ObjectBehavior
@@ -85,7 +85,7 @@ Feature: Developer runs the specs
       }
 
       """
-    When I run phpspec
+      When I run lopspec
     Then I should see "Letgo is called"
 
     @issue214
@@ -96,7 +96,7 @@ Feature: Developer runs the specs
 
       namespace spec\Runner\SpecExample4;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class MarkdownSpec extends ObjectBehavior
@@ -128,5 +128,5 @@ Feature: Developer runs the specs
       }
 
       """
-    When I run phpspec
+      When I run lopspec
     Then I should see "Letgo is called"

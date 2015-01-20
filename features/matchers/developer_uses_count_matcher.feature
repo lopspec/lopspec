@@ -10,7 +10,7 @@ Feature: Developer uses array-count matcher
 
     namespace spec\Matchers\ArrayCountExample1;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class CarSpec extends ObjectBehavior
@@ -37,5 +37,5 @@ Feature: Developer uses array-count matcher
     }
     """
 
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass

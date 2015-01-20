@@ -7,15 +7,14 @@ Create a ``composer.json`` file:
 
     {
         "require-dev": {
-            "phpspec/phpspec": "~2.0"
+            "lopspec/lopspec": "~1.0"
         },
         "config": {
             "bin-dir": "bin"
-        },
-        "autoload": {"psr-0": {"": "src"}}
+        }
     }
 
-Install **phpspec** with composer:
+Install **lopspec** with composer:
 
 .. code-block:: bash
 
@@ -26,7 +25,7 @@ Start writing specs:
 
 .. code-block:: bash
 
-    bin/phpspec desc Acme/Calculator
+    bin/lopspec desc Acme/Calculator
 
 Learn more from :doc:`the documentation <manual/introduction>`.
 

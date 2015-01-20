@@ -10,7 +10,7 @@ Feature: Developer generates a method returning a constant
 
       namespace spec\CodeGeneration\ConstantExample1;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class MarkdownSpec extends ObjectBehavior
@@ -35,7 +35,7 @@ Feature: Developer generates a method returning a constant
       }
 
       """
-    When I run phpspec with the option "fake" and answer "y" when asked if I want to generate the code
+    When I run lopspec with the option "fake" and answer "y" when asked if I want to generate the code
     Then the class in "src/CodeGeneration/ConstantExample1/Markdown.php" should contain:
       """
       <?php
@@ -59,7 +59,7 @@ Feature: Developer generates a method returning a constant
 
       namespace spec\CodeGeneration\ConstantExample2;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class MarkdownSpec extends ObjectBehavior
@@ -89,7 +89,7 @@ Feature: Developer generates a method returning a constant
       }
 
       """
-    When I run phpspec with the option "fake" and answer "y" when asked if I want to generate the code
+    When I run lopspec with the option "fake" and answer "y" when asked if I want to generate the code
     Then the class in "src/CodeGeneration/ConstantExample2/Markdown.php" should contain:
       """
       <?php
@@ -113,7 +113,7 @@ Feature: Developer generates a method returning a constant
 
       namespace spec\CodeGeneration\ConstantExample3;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class MarkdownSpec extends ObjectBehavior
@@ -140,7 +140,7 @@ Feature: Developer generates a method returning a constant
       }
 
       """
-    When I run phpspec interactively with the "fake" option
+    When I run lopspec interactively with the "fake" option
     Then I should not be prompted for code generation
 
   Scenario: No prompt when examples contradict code
@@ -150,7 +150,7 @@ Feature: Developer generates a method returning a constant
 
       namespace spec\CodeGeneration\ConstantExample4;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class MarkdownSpec extends ObjectBehavior
@@ -181,7 +181,7 @@ Feature: Developer generates a method returning a constant
       }
 
       """
-    When I run phpspec interactively with the "fake" option
+    When I run lopspec interactively with the "fake" option
     Then I should not be prompted for code generation
 
   Scenario: No prompt when CLI option is not used
@@ -191,7 +191,7 @@ Feature: Developer generates a method returning a constant
 
       namespace spec\CodeGeneration\ConstantExample5;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class MarkdownSpec extends ObjectBehavior
@@ -217,7 +217,7 @@ Feature: Developer generates a method returning a constant
       }
 
       """
-    When I run phpspec interactively
+    When I run lopspec interactively
     Then I should not be prompted for code generation
 
   Scenario: Prompted when CLI option is not used but config flag is set
@@ -227,7 +227,7 @@ Feature: Developer generates a method returning a constant
 
       namespace spec\CodeGeneration\ConstantExample6;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class MarkdownSpec extends ObjectBehavior
@@ -257,5 +257,5 @@ Feature: Developer generates a method returning a constant
       """
       fake: true
       """
-    When I run phpspec interactively
+    When I run lopspec interactively
     Then I should be prompted for code generation

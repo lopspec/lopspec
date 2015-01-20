@@ -1,7 +1,7 @@
 Feature: Developer chooses stop on failure
   As a Developer
   I want to set the stop on failure setting option
-  In order to specify how phpspec behaves on failure
+  In order to specify how lopspec behaves on failure
 
   @issue352
   Scenario: stop-on-failure defaults to off
@@ -11,7 +11,7 @@ Feature: Developer chooses stop on failure
 
       namespace spec\SkipOnFailure\SpecExample1;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class FirstFailSpec extends ObjectBehavior
@@ -43,7 +43,7 @@ Feature: Developer chooses stop on failure
       }
 
       """
-    When I run phpspec
+    When I run lopspec
     Then 2 examples should have been run
 
   @issue352
@@ -58,7 +58,7 @@ Feature: Developer chooses stop on failure
 
       namespace spec\SkipOnFailure\SpecExample2;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class FirstFailSpec extends ObjectBehavior
@@ -90,7 +90,7 @@ Feature: Developer chooses stop on failure
       }
 
       """
-    When I run phpspec
+    When I run lopspec
     Then 1 example should have been run
     And the exit code should be 1
 
@@ -106,7 +106,7 @@ Feature: Developer chooses stop on failure
 
       namespace spec\SkipOnFailure\SpecExample3;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class FirstFailSpec extends ObjectBehavior
@@ -138,7 +138,7 @@ Feature: Developer chooses stop on failure
       }
 
       """
-    When I run phpspec with the "stop-on-failure" option
+    When I run lopspec with the "stop-on-failure" option
     Then 1 example should have been run
     And the exit code should be 1
 

@@ -2,12 +2,14 @@
 
 namespace Fake;
 
-use PhpSpec\Process\ReRunner as BaseReRunner;
+use LopSpec\Process\ReRunner as BaseReRunner;
 
 class ReRunner implements BaseReRunner
 {
-    private $hasBeenReRun = false;
-
+    public function hasBeenReRun()
+    {
+        return $this->beenReRun;
+    }
     /**
      * @return boolean
      */
@@ -18,11 +20,7 @@ class ReRunner implements BaseReRunner
 
     public function reRunSuite()
     {
-        $this->hasBeenReRun = true;
+        $this->beenReRun = true;
     }
-
-    public function hasBeenReRun()
-    {
-        return $this->hasBeenReRun;
-    }
+    private $beenReRun = false;
 }

@@ -10,7 +10,7 @@ Feature: Developer uses array-key matcher
 
     namespace spec\Matchers\ArrayKeyExample1;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class MovieSpec extends ObjectBehavior
@@ -40,5 +40,5 @@ Feature: Developer uses array-key matcher
     }
     """
 
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass

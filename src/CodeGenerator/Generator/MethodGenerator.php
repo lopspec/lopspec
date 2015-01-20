@@ -1,0 +1,106 @@
+<?php
+
+/*
+ * This file is part of LopSpec, A php toolset to drive emergent
+ * design by specification.
+ *
+ * (c) Marcello Duarte <marcello.duarte@gmail.com>
+ * (c) Konstantin Kudryashov <ever.zet@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+namespace LopSpec\CodeGenerator\Generator;
+
+use LopSpec\CodeGenerator\TemplateRenderer;
+use LopSpec\Console\IO;
+use LopSpec\Locator\ResourceInterface;
+use LopSpec\Util\Filesystem;
+
+/**
+ * Generates class methods from a resource
+ */
+class MethodGenerator implements GeneratorInterface
+{
+    /**
+     * @param IO               $io
+     * @param TemplateRenderer $templates
+     * @param Filesystem       $filesystem
+     */
+    public function __construct(IO $io, TemplateRenderer $templates, Filesystem $filesystem = null)
+    {
+        $this->io         = $io;
+        $this->templates  = $templates;
+        $this->filesystem = $filesystem ?: new Filesystem();
+    }
+    /**
+     * @param ResourceInterface $resource
+     * @param array             $data
+     */
+    public function generate(ResourceInterface $resource, array $data = [])
+    {
+        $filepath  = $resource->getSrcFilename();
+        $name      = $data['name'];
+        $arguments = $data['arguments'];
+
+        $argString = count($arguments)
+            ? '$argument'.implode(', $argument',  range(1, count($arguments)))
+            : ''
+        ;
+        $values = ['%name%' => $name, '%arguments%' => $argString];
+        if (!$content = $this->templates->render('method', $values)) {
+            $content = $this->templates->renderString(
+                $this->getTemplate(), $values
+            );
+        }
+
+        $code = $this->filesystem->getFileContents($filepath);
+        $code = preg_replace('/}[ \n]*$/', rtrim($content)."\n}\n", trim($code));
+        $this->filesystem->putFileContents($filepath, $code);
+
+        $this->io->writeln(sprintf(
+            "<info>Method <value>%s::%s()</value> has been created.</info>\n",
+            $resource->getSrcClassname(), $name
+        ), 2);
+    }
+    /**
+     * @return int
+     */
+    public function getPriority()
+    {
+        return 0;
+    }
+    /**
+     * @param ResourceInterface $resource
+     * @param string            $generation
+     * @param array             $data
+     *
+     * @return bool
+     */
+    public function supports(
+        ResourceInterface $resource,
+        $generation,
+        array $data
+    ) {
+        return 'method' === $generation;
+    }
+    /**
+     * @return string
+     */
+    protected function getTemplate()
+    {
+        return file_get_contents(__DIR__.'/templates/method.template');
+    }
+    /**
+     * @type \LopSpec\Util\Filesystem
+     */
+    private $filesystem;
+    /**
+     * @type \LopSpec\Console\IO
+     */
+    private $io;
+    /**
+     * @type \LopSpec\CodeGenerator\TemplateRenderer
+     */
+    private $templates;
+}

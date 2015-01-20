@@ -1,7 +1,7 @@
 Object Construction
 ===================
 
-In **phpspec** specs the object you are describing is not a separate variable
+In **lopspec** specs the object you are describing is not a separate variable
 but is `$this`. So instead of writing something like:
 
 .. code-block:: php
@@ -10,7 +10,7 @@ but is `$this`. So instead of writing something like:
 
     namespace spec;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
 
     class MarkdownSpec extends ObjectBehavior
     {
@@ -29,7 +29,7 @@ as you might with other tools, you write:
 
     namespace spec;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
 
     class MarkdownSpec extends ObjectBehavior
     {
@@ -40,18 +40,18 @@ as you might with other tools, you write:
     }
 
 On consequence this means that you do not construct the object you are
-describing in the examples. Instead **phpspec** handles the creation of the
+describing in the examples. Instead **lopspec** handles the creation of the
 object you are describing when you run the specs.
 
-The default way **phpspec** does this is the same as ``new Markdown()``.
+The default way **lopspec** does this is the same as ``new Markdown()``.
 If it does not need any values or dependencies to be passed to it then this is
-fine but for many objects this will not be good enough. You can tell **phpspec**
+fine but for many objects this will not be good enough. You can tell **lopspec**
 how you want it to create the object though.
 
 Using the Constructor
 ---------------------
 
-You can tell **phpspec** to pass values to the constructor when it constructs the object:
+You can tell **lopspec** to pass values to the constructor when it constructs the object:
 
 .. code-block:: php
 
@@ -59,7 +59,7 @@ You can tell **phpspec** to pass values to the constructor when it constructs th
 
         namespace spec;
 
-        use PhpSpec\ObjectBehavior;
+        use LopSpec\ObjectBehavior;
         use Markdown\Writer;
 
         class MarkdownSpec extends ObjectBehavior
@@ -97,7 +97,7 @@ only have a single constructor in PHP.
             }
         }
 
-You can tell **phpspec** this is how you want to construct the object as follows:
+You can tell **lopspec** this is how you want to construct the object as follows:
 
 .. code-block:: php
 
@@ -105,7 +105,7 @@ You can tell **phpspec** this is how you want to construct the object as follows
 
         namespace spec;
 
-        use PhpSpec\ObjectBehavior;
+        use LopSpec\ObjectBehavior;
         use Markdown\Writer;
 
         class MarkdownSpec extends ObjectBehavior
@@ -125,10 +125,10 @@ to pass to that method.
 Overriding
 ----------
 
-To avoid repetition you can tell **phpspec** how to construct the object in `let`.
+To avoid repetition you can tell **lopspec** how to construct the object in `let`.
 However, you may have a single example that needs constructing in a different way.
 You can do this by calling ``beConstructedWith`` again in the example. The last time you
-call ``beConstructedWith`` will determine how **phpspec** constructs the object:
+call ``beConstructedWith`` will determine how **lopspec** constructs the object:
 
 .. code-block:: php
 
@@ -136,7 +136,7 @@ call ``beConstructedWith`` will determine how **phpspec** constructs the object:
 
         namespace spec;
 
-        use PhpSpec\ObjectBehavior;
+        use LopSpec\ObjectBehavior;
         use Markdown\Writer;
 
         class MarkdownSpec extends ObjectBehavior

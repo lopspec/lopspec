@@ -10,12 +10,12 @@ then you can do it like this:
 
         namespace spec;
 
-        use PhpSpec\ObjectBehavior;
+        use LopSpec\ObjectBehavior;
         use Markdown\Writer;
 
         class MarkdownSpec extends ObjectBehavior
         {
-            function it_outputs_converted_text(Writer $writer)
+            function itOutputsConvertedText(Writer $writer)
             {
                 $this->beConstructedWith($writer);
                 $writer->writeText("<p>Hi, there</p>")->shouldBeCalled();
@@ -35,7 +35,7 @@ a fresh mock object.
 
         namespace spec;
 
-        use PhpSpec\ObjectBehavior;
+        use LopSpec\ObjectBehavior;
         use Markdown\Writer;
 
         class MarkdownSpec extends ObjectBehavior
@@ -51,7 +51,7 @@ to clean up after the examples.
 
 It looks like you will now have difficulty getting hold of the instance
 of the mock object in the examples. This is easier to deal with than it looks
-though. Providing you use the same variable name for both, **phpspec** will
+though. Providing you use the same variable name for both, **lopspec** will
 inject the same instance into the `let` method and the example. The following
 will work:
 
@@ -61,7 +61,7 @@ will work:
 
         namespace spec;
 
-        use PhpSpec\ObjectBehavior;
+        use LopSpec\ObjectBehavior;
         use Markdown\Writer;
 
         class MarkdownSpec extends ObjectBehavior
@@ -71,7 +71,7 @@ will work:
                 $this->beConstructedWith($writer);
             }
 
-            function it_outputs_converted_text($writer)
+            function itOutputsConvertedText($writer)
             {
                 $writer->writeText("<p>Hi, there</p>")->shouldBeCalled();
 

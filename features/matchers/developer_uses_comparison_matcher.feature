@@ -10,7 +10,7 @@ Feature: Developer uses comparison matcher
 
     namespace spec\Matchers\ComparisonExample1;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class StringCalculatorSpec extends ObjectBehavior
@@ -37,5 +37,5 @@ Feature: Developer uses comparison matcher
     }
     """
 
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass

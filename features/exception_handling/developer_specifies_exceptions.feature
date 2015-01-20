@@ -10,7 +10,7 @@ Feature: Developer specifies exception behaviour
 
       namespace spec\Runner\ExceptionExample3;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class MarkdownSpec extends ObjectBehavior
@@ -44,5 +44,5 @@ Feature: Developer specifies exception behaviour
       }
 
       """
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass

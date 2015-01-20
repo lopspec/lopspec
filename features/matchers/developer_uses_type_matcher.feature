@@ -10,7 +10,7 @@ Feature: Developer uses type matcher
 
     namespace spec\Matchers\TypeExample1;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class CarSpec extends ObjectBehavior
@@ -33,7 +33,7 @@ Feature: Developer uses type matcher
     }
     """
 
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass
 
 
@@ -44,7 +44,7 @@ Feature: Developer uses type matcher
 
     namespace spec\Matchers\TypeExample2;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class CarSpec extends ObjectBehavior
@@ -71,7 +71,7 @@ Feature: Developer uses type matcher
     }
     """
 
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass
 
   Scenario: "BeAnInstanceOf" alias matches using the type matcher
@@ -81,7 +81,7 @@ Feature: Developer uses type matcher
 
     namespace spec\Matchers\TypeExample3;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class CarSpec extends ObjectBehavior
@@ -108,7 +108,7 @@ Feature: Developer uses type matcher
     }
     """
 
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass
 
   Scenario: "Implement" alias matches using the type matcher
@@ -118,7 +118,7 @@ Feature: Developer uses type matcher
 
     namespace spec\Matchers\TypeExample4;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class CarSpec extends ObjectBehavior
@@ -141,5 +141,5 @@ Feature: Developer uses type matcher
     }
     """
 
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass

@@ -10,7 +10,7 @@ Feature: Developer generates a method
 
       namespace spec\CodeGeneration\MethodExample1;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class MarkdownSpec extends ObjectBehavior
@@ -33,7 +33,7 @@ Feature: Developer generates a method
       }
 
       """
-    When I run phpspec and answer "y" when asked if I want to generate the code
+    When I run lopspec and answer "y" when asked if I want to generate the code
     Then the class in "src/CodeGeneration/MethodExample1/Markdown.php" should contain:
       """
       <?php
@@ -57,7 +57,7 @@ Feature: Developer generates a method
 
       namespace spec\Behat\Tests\MyNamespace;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class PrefixSpec extends ObjectBehavior
@@ -87,7 +87,7 @@ Feature: Developer generates a method
       }
 
       """
-    When I run phpspec and answer "y" when asked if I want to generate the code
+    When I run lopspec and answer "y" when asked if I want to generate the code
     Then the class in "src/MyNamespace/Prefix.php" should contain:
       """
       <?php

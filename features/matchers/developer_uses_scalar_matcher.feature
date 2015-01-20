@@ -10,7 +10,7 @@ Feature: Developer uses scalar matcher
 
     namespace spec\Matchers\ScalarExample1;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class CarSpec extends ObjectBehavior
@@ -49,5 +49,5 @@ Feature: Developer uses scalar matcher
     }
     """
 
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass

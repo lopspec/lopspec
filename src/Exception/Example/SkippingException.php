@@ -1,0 +1,24 @@
+<?php
+
+/*
+ * This file is part of LopSpec, A php toolset to drive emergent
+ * design by specification.
+ *
+ * (c) Marcello Duarte <marcello.duarte@gmail.com>
+ * (c) Konstantin Kudryashov <ever.zet@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+namespace LopSpec\Exception\Example;
+
+class SkippingException extends ExampleException
+{
+    /**
+     * @param string $text
+     */
+    public function __construct($text)
+    {
+        parent::__construct(sprintf('skipped: %s', $text));
+    }
+}

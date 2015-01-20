@@ -10,7 +10,7 @@ Feature: Developer uses throw matcher
 
     namespace spec\Matchers\ThrowExample1;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class EmployeeSpec extends ObjectBehavior
@@ -39,7 +39,7 @@ Feature: Developer uses throw matcher
     }
     """
 
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass
 
   Scenario: "Throw" alias matches using the throw matcher with implicit method name
@@ -49,7 +49,7 @@ Feature: Developer uses throw matcher
 
     namespace spec\Matchers\ThrowExample2;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class EmployeeSpec extends ObjectBehavior
@@ -78,7 +78,7 @@ Feature: Developer uses throw matcher
     }
     """
 
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass
 
 
@@ -89,7 +89,7 @@ Feature: Developer uses throw matcher
 
     namespace spec\Matchers\ThrowExample3;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class EmployeeSpec extends ObjectBehavior
@@ -118,7 +118,7 @@ Feature: Developer uses throw matcher
     }
     """
 
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass
 
   @issue134
@@ -129,7 +129,7 @@ Feature: Developer uses throw matcher
 
     namespace spec\Runner\ThrowExample4;
 
-    use PhpSpec\ObjectBehavior;
+    use LopSpec\ObjectBehavior;
     use Prophecy\Argument;
 
     class MarkdownSpec extends ObjectBehavior
@@ -161,5 +161,5 @@ Feature: Developer uses throw matcher
     }
 
     """
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass

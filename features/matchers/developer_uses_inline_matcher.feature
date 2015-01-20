@@ -10,7 +10,7 @@ Feature: Developer uses identity matcher
 
       namespace spec\Matchers\InlineExample1;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class CalculatorSpec extends ObjectBehavior
@@ -53,7 +53,7 @@ Feature: Developer uses identity matcher
       }
 
       """
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass
 
   Scenario: Inline matcher with an argument
@@ -63,7 +63,7 @@ Feature: Developer uses identity matcher
 
       namespace spec\Matchers\InlineExample2;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class CalculatorSpec extends ObjectBehavior
@@ -106,6 +106,6 @@ Feature: Developer uses identity matcher
       }
 
       """
-    When I run phpspec
+    When I run lopspec
     Then the suite should pass
 

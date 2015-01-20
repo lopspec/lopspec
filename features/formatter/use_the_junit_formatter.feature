@@ -1,16 +1,16 @@
 Feature: Use the JUnit formatter
-  In order to provide my CI tool with parsable phpspec results
+  In order to provide my CI tool with parsable lopspec results
   As a developer
   I need to be able to use a JUnit formatter
 
-  Scenario: Successfully export phpspec results in JUnit format
+  Scenario: Successfully export lopspec results in JUnit format
     Given the spec file "spec/Formatter/SpecExample/MarkdownSpec.php" contains:
       """
       <?php
 
       namespace spec\Formatter\SpecExample;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class MarkdownSpec extends ObjectBehavior
@@ -41,7 +41,7 @@ Feature: Use the JUnit formatter
           // skipped
           function it_does_some_incompatible_things()
           {
-              throw new \PhpSpec\Exception\Example\SkippingException();
+              throw new \LopSpec\Exception\Example\SkippingException();
           }
       }
 
@@ -64,5 +64,5 @@ Feature: Use the JUnit formatter
       }
 
       """
-    When I run phpspec using the "junit" format
+    When I run lopspec using the "junit" format
     Then I should see valid junit output

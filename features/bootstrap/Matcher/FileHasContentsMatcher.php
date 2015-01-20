@@ -2,31 +2,41 @@
 
 namespace Matcher;
 
-use PhpSpec\Exception\Example\FailureException;
-use PhpSpec\Matcher\MatcherInterface;
+use LopSpec\Exception\Example\FailureException;
+use LopSpec\Matcher\MatcherInterface;
 
 class FileHasContentsMatcher implements MatcherInterface
 {
     /**
-     * Checks if matcher supports provided subject and matcher name.
+     * Returns matcher priority.
+     *
+     * @return integer
+     */
+    public function getPriority()
+    {
+        return 51;
+    }
+    /**
+     * Evaluates negative match.
      *
      * @param string $name
-     * @param mixed $subject
-     * @param array $arguments
+     * @param mixed  $subject
+     * @param array  $arguments
      *
-     * @return Boolean
+     * @throws FailureException
      */
-    public function supports($name, $subject, array $arguments)
+    public function negativeMatch($name, $subject, array $arguments)
     {
-        return ('haveContents' == $name && is_string($subject));
+        throw new FailureException('Negative file contents matcher not implemented');
     }
-
     /**
      * Evaluates positive match.
      *
      * @param string $name
-     * @param mixed $subject
-     * @param array $arguments
+     * @param mixed  $subject
+     * @param array  $arguments
+     *
+     * @throws FailureException
      */
     public function positiveMatch($name, $subject, array $arguments)
     {
@@ -41,26 +51,17 @@ class FileHasContentsMatcher implements MatcherInterface
             ));
         }
     }
-
     /**
-     * Evaluates negative match.
+     * Checks if matcher supports provided subject and matcher name.
      *
      * @param string $name
      * @param mixed $subject
      * @param array $arguments
-     */
-    public function negativeMatch($name, $subject, array $arguments)
-    {
-        throw new FailureException('Negative file contents matcher not implemented');
-    }
-
-    /**
-     * Returns matcher priority.
      *
-     * @return integer
+     * @return Boolean
      */
-    public function getPriority()
+    public function supports($name, $subject, array $arguments)
     {
-        return 51;
+        return ('haveContents' == $name && is_string($subject));
     }
 }

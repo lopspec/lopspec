@@ -11,7 +11,7 @@ Feature: Developer generates a spec
 
       namespace spec\CodeGeneration\SpecExample1;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class MarkdownSpec extends ObjectBehavior
@@ -33,7 +33,7 @@ Feature: Developer generates a spec
 
       namespace spec\CodeGeneration\SpecExample1;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class Text_MarkdownSpec extends ObjectBehavior
@@ -55,7 +55,7 @@ Feature: Developer generates a spec
 
       namespace spec\CodeGeneration\Spec_Example2;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class Text_MarkdownSpec extends ObjectBehavior
@@ -83,7 +83,7 @@ Feature: Developer generates a spec
 
       namespace spec\Behat\CodeGeneration;
 
-      use PhpSpec\ObjectBehavior;
+      use LopSpec\ObjectBehavior;
       use Prophecy\Argument;
 
       class MarkdownSpec extends ObjectBehavior
