@@ -43,7 +43,7 @@
     },
     "autoload": {
       "psr-4": {
-            "PhpSpec": "src/"
+            "LopSpec": "src/"
         }
     },
   "bin": ["bin/lopspec"],
