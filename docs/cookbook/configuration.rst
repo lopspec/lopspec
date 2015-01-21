@@ -6,8 +6,8 @@ its built-in defaults. It will look for the follow files:
 
 * ``lopspec.dist.yml`` - In the root of your project.
 * ``lopspec.yml`` - Also looked for in the root of your project.
-* ``.lopspec.yml`` - Looked for in your home folder HOME (Unix) or USERPROFILE
-  (Windows).
+* ``.lopspec.yml`` - Looked for in your personal folder ``HOME`` (Unix) or
+ ``USERPROFILE`` (Windows).
 
 You can also use the ``-c`` or ``--config`` command line option to use an
 additional custom file.
@@ -17,7 +17,15 @@ additional custom file.
     $ bin/lopspec run --config path/to/different-lopspec.yml
 
 Lopspec looks for the files in the order given with any settings found in the
-later files overwriting earlier settings from any of the previous files.
+later files overwriting settings from any of the previous files.
+
+NOTE: For anyone coming from **phpspec** that it look for its file in this order
+`` --config=my_custom_config.yml``, ``phpspec.yml``, ``phpspec.yml.dist`` but
+they were not merge it would simply use which ever one it found first. It
+would merge the personal ``.phpspec.yml`` if it found one but because it
+only look for the ``HOME`` environmental variable which is typical only found on
+Unix systems Windows users didn't have the same option for merging personal
+settings without additional work to set up the variable.
 
 .. _configuration-suites:
 
@@ -25,17 +33,17 @@ PSR-4
 -----
 
 **lopspec** assumes a PSR-4 mapping of namespaces to the src and spec
-directories by default. So for example running:
+directories by default. So for example running **lopspec** and default settings:
 
 .. code-block:: bash
 
     $ bin/lopspec describe Acme/Text/Markdown
 
-Will create a spec in the ``spec/Text/MarkdownSpec.php`` file and the class will
-be created in ``src/Text/Markdown.php``
+Will create a spec in the ``spec/Text/MarkdownSpec.php`` file and the class
+will be created in ``src/Text/Markdown.php``
 
-The first part of the ``namespace`` option in a suite well be omitted from the
-directory structure like so:
+The first part of the ``namespace`` option in a suite will be omitted from the
+directory structure. Another example with a configuration file.
 
 .. code-block:: yaml
 
@@ -54,34 +62,39 @@ will now put the spec in ``spec/Acme/Text/MarkdownSpec.php`` and it contains
 ``src/Text/Markdown.php`` and it contains ``namespace Acme\Text;``. If you need
 to support a legacy PSR-0 directory structure that includes the first part of
 the namespace simple add it to the end of the src and/or spec paths as needed.
+An example of this will be given in the next section.
 
 Spec and source locations
 -------------------------
 
 The default locations used by **lopspec** for the spec files and source files
-are `spec` and `src` respectively. You may find that this does not always suit
-your needs. You can specify an alternative location in the configuration file.
-You cannot do this at the command line as it does not make sense for a spec or
-source files path to change at runtime.
+are ``spec`` and ``src`` respectively. You may find that this does not always
+suit your needs. You can specify an alternative location in the configuration
+file. You cannot do this at the command line as it does not make sense for a
+spec or source files path to change at runtime.
 
 You can specify alternative values depending on the namespace of the class you
-are describing. In lopspec, you can group specification files by a certain
-namespace in a *suite*. For each suite, you have several configuration settings:
+are describing. In **lopspec**, you can group specification files by a certain
+namespace in a **suite**. For each suite, you have several configuration
+settings you can use:
 
 * ``src_namespace`` [**default**: empty string] - The namespace of the classes.
   Used for locating and build the full path to classes and added to the
-  ``spec_namespace`` as well.
-
-* ``spec_namespace`` [**default**: ``Spec``] - The namespace prefix for
-  specifications. The complete namespace for specifications is
-  ``%spec_namespace%\%src_namespace%``.
+  ``spec_namespace`` as well when working with specifications.
 * ``src_path`` [**default**: ``src``] - The path to store the generated
   classes. Paths are relative to the location of the config file. **lopspec**
   creates the directories if they do not exist. This does not include the
-  namespace directories which are add as suffix when making paths.
+  namespace directories which are add as a suffix when making paths. So the
+  full path looks like ``%src_path%/%src_namespace%/...`` but note it uses PSR-4
+  so the path is shorten following PSR rules so see below for more info.
+* ``spec_namespace`` [**default**: ``Spec``] - The namespace prefix for
+  specifications. The complete namespace for specifications is
+  ``%spec_namespace%\%src_namespace%``.
 * ``spec_path`` [**default**: ``spec``] - The path of the specifications. This
   does not include the spec prefix or namespace which are added as needed when
-  building a full path.
+  building a full path. An example full path might look like
+  ``%spec_path%/%spec_namespace%/%src_namespace%`` with same PSR-4 rules applied
+  as with ``src_path``.
 
 Some examples:
 
@@ -166,6 +179,7 @@ project.
 .. code-block:: bash
 
     bin/
+        ...
     lib/
         Acme/
             Text/
@@ -241,7 +255,8 @@ More formatters can be added by :doc:`extensions</cookbook/extensions>`.
 Options
 -------
 
-You can turn off code generation in your config file by setting ``code_generation``:
+You can turn off code generation in your config file by setting
+``code_generation``:
 
 .. code-block:: yaml
 
@@ -262,4 +277,4 @@ array of extension classes:
 .. code-block:: yaml
 
     extensions:
-        - LopSpec\Symfony2Extension\Extension
+        - LopSpec\NyanFormattersExtension\Extension

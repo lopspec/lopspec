@@ -24,7 +24,7 @@ class ResultConverter
      *
      * @param mixed $result
      *
-     * @return 0|1
+     * @return int 0|1
      */
     public function convert($result)
     {
