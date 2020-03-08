@@ -1,6 +1,8 @@
 lopspec
 =======
 
+Going to archive the project as I'm no longer working on it nor will support it in the future.
+
 The main website with documentation is at
 `https://github.com/lopspec/lopspec <https://github.com/lopspec/lopspec>`_.
 
